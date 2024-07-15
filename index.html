@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matrix Website</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Chakra Petch', sans-serif;
+    }
+    .matrix-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-black text-white">
+  <canvas id="matrixCanvas" class="matrix-canvas"></canvas>
+  
+  <div class="w-full h-screen flex flex-col items-center justify-center px-4">
+    <h1 class="text-4xl md:text-6xl text-center">WELCOME TO MATRIX</h1>
+    <p class="text-xl md:text-2xl my-8 md:my-16 text-center">Choose One Of This :</p>
+    <p class="w-full md:w-4/5 lg:w-3/5 text-lg md:text-xl text-center">
+      Red pill Allows You to see past the illusion created by the Matrix and understand its oppressive nature. This pill symbolizes themes of reality versus illusion, fate versus free will, and the willingness to learn an unsettling truth.
+    </p>
+    <p class="w-full md:w-4/5 lg:w-3/5 my-4 md:my-6 text-lg md:text-xl text-center">
+      Blue pill Allows You to continue experiencing the illusion and remain in a state of blissful ignorance. This pill symbolizes themes of accepting lies as truths and fearing what reality could be.
+    </p>
+    <div class="flex flex-col md:flex-row items-center mt-8 md:mt-10 space-y-4 md:space-y-0 md:space-x-12">
+      <a href="https://www.chaingpt.org/#reviews">
+        <div class="text-xl md:text-2xl bg-red-700 border border-gray-500 rounded-xl py-2 md:py-3 px-6 md:px-10 text-center">
+          RED
+        </div>
+      </a>
+      <a href="https://www.cyoa.com/">
+        <div class="text-xl md:text-2xl bg-blue-700 border border-gray-500 rounded-xl py-2 md:py-3 px-6 md:px-10 text-center">
+          BLUE
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const canvas = document.getElementById('matrixCanvas');
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+      let columns = Math.floor(width / 20);
+      const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+      const charArray = characters.split('');
+      let drops = [];
+
+      for (let i = 0; i < columns; i++) {
+        drops[i] = 1;
+      }
+
+      const draw = () => {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+        ctx.fillRect(0, 0, width, height);
+
+        ctx.fillStyle = '#0f0';
+        ctx.font = '15px monospace';
+        for (let i = 0; i < drops.length; i++) {
+          const text = charArray[Math.floor(Math.random() * charArray.length)];
+          ctx.fillText(text, i * 20, drops[i] * 20);
+
+          if (drops[i] * 20 > height && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+
+          drops[i]++;
+        }
+      };
+
+      const animate = () => {
+        draw();
+        requestAnimationFrame(animate);
+      };
+
+      animate();
+
+      const handleResize = () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        columns = Math.floor(width / 20);
+        drops = [];
+        for (let i = 0; i < columns; i++) {
+          drops[i] = 1;
+        }
+      };
+
+      window.addEventListener('resize', handleResize);
+    });
+  </script>
+</body>
+</html>
