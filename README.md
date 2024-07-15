@@ -2,17 +2,6 @@
 
 Welcome to the Matrix website project! This project is inspired by the Matrix movie and showcases a visually captivating website with a Matrix theme.
 
-## Table of Contents
-
-- [Demo](#demo)
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
-
 ## Demo
 
 Check out the live demo of the Matrix website here: [Matrix Website Demo]( https://sandfm118.github.io/MATRIX/)
@@ -36,4 +25,4 @@ To run this project locally, follow these steps:
     ```bash
     git clone https://github.com/sandfm118/MATRIX.git
     ```
-Follow me on Twitter: @SANDF_M17
+Follow me on Twitter:[SANDF_M17]([https://sandfm118.github.io/MATRIX/](https://x.com/SANDF_M17))
